@@ -3,6 +3,8 @@ import ColorSwatch from "@/components/ColorSwatch";
 import ButtonShowcase from "@/components/ButtonShowcase";
 import FormShowcase from "@/components/FormShowcase";
 import TypographyShowcase from "@/components/TypographyShowcase";
+import IconShowcase from "@/components/IconShowcase";
+import ComponentShowcase from "@/components/ComponentShowcase";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 
@@ -70,11 +72,13 @@ const Index = () => {
       {/* Main Content */}
       <main className="container mx-auto px-4 py-8">
         <Tabs defaultValue="colors" className="w-full">
-          <TabsList className="grid w-full grid-cols-4 mb-8">
+          <TabsList className="grid w-full grid-cols-6 mb-8">
             <TabsTrigger value="colors">Cores</TabsTrigger>
             <TabsTrigger value="typography">Tipografia</TabsTrigger>
             <TabsTrigger value="buttons">Botões</TabsTrigger>
             <TabsTrigger value="forms">Formulários</TabsTrigger>
+            <TabsTrigger value="icons">Ícones</TabsTrigger>
+            <TabsTrigger value="components">Componentes</TabsTrigger>
           </TabsList>
 
           {/* Colors Tab */}
@@ -173,6 +177,36 @@ const Index = () => {
               </CardHeader>
               <CardContent>
                 <FormShowcase />
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          {/* Icons Tab */}
+          <TabsContent value="icons" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>03. Ícones</CardTitle>
+                <CardDescription>
+                  Biblioteca de ícones para interface e redes sociais
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <IconShowcase />
+              </CardContent>
+            </Card>
+          </TabsContent>
+
+          {/* Components Tab */}
+          <TabsContent value="components" className="space-y-6">
+            <Card>
+              <CardHeader>
+                <CardTitle>06. Componentes</CardTitle>
+                <CardDescription>
+                  Cards, modais, badges e outros elementos compostos da interface
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ComponentShowcase />
               </CardContent>
             </Card>
           </TabsContent>
