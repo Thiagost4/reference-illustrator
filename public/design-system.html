@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayerCore Design System - Referência Visual</title>
+    <meta name="description" content="Sistema de design visual da PlayerCore com cores, tipografia, botões e componentes de interface">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Caveat:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #ED1E79;
+            --secondary: #2E0274;
+            --dark: #11002C;
+            --light: #FFFFFF;
+            --base: #E9E9E9;
+            --contrast: #0A0A0A;
+            --danger: #FF4242;
+            --success: #3FE34F;
+            --warning: #FCFF52;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fafafa;
+            color: var(--contrast);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: white;
+            border-bottom: 2px solid var(--base);
+            padding: 30px 0;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            color: var(--primary);
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            margin: 40px 0 20px;
+            color: var(--secondary);
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            margin: 30px 0 15px;
+            color: var(--contrast);
+        }
+
+        .subtitle {
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .section {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .grid {
+            display: grid;
+            gap: 20px;
+        }
+
+        .grid-2 {
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        }
+
+        .grid-3 {
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        }
+
+        .grid-4 {
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        }
+
+        /* Color Swatches */
+        .color-swatch {
+            border: 2px solid var(--base);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .color-preview {
+            height: 120px;
+            width: 100%;
+        }
+
+        .color-info {
+            padding: 15px;
+        }
+
+        .color-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .color-hex {
+            font-family: 'Courier New', monospace;
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 8px;
+        }
+
+        .color-description {
+            font-size: 0.85rem;
+            color: #888;
+        }
+
+        /* Typography */
+        .typography-example {
+            margin: 15px 0;
+            padding: 15px;
+            border-left: 4px solid var(--primary);
+            background: #fafafa;
+        }
+
+        .handwriting {
+            font-family: 'Caveat', cursive;
+            font-size: 1.8rem;
+            color: var(--primary);
+        }
+
+        /* Buttons */
+        .button-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .btn {
+            padding: 12px 24px;
+            border-radius: 8px;
+            border: none;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: #d01a6a;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(237, 30, 121, 0.3);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .btn-secondary:hover {
+            background-color: #250262;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(46, 2, 116, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-success {
+            background-color: var(--success);
+            color: var(--contrast);
+        }
+
+        .btn-danger {
+            background-color: var(--danger);
+            color: white;
+        }
+
+        .btn-sm {
+            padding: 8px 16px;
+            font-size: 0.9rem;
+        }
+
+        .btn-lg {
+            padding: 16px 32px;
+            font-size: 1.1rem;
+        }
+
+        .btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        /* Forms */
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: var(--contrast);
+        }
+
+        input[type="text"],
+        input[type="email"],
+        textarea {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid var(--base);
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        input:focus,
+        textarea:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(237, 30, 121, 0.1);
+        }
+
+        input.error {
+            border-color: var(--danger);
+        }
+
+        input.success {
+            border-color: var(--success);
+        }
+
+        input:disabled {
+            background-color: #f5f5f5;
+            cursor: not-allowed;
+        }
+
+        textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+
+        /* Icons */
+        .icon-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+
+        .icon-item {
+            border: 2px solid var(--base);
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .icon-item:hover {
+            border-color: var(--primary);
+        }
+
+        .icon {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .icon-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+
+        .icon-desc {
+            font-size: 0.75rem;
+            color: #888;
+        }
+
+        /* Cards */
+        .card {
+            border: 2px solid var(--base);
+            border-radius: 12px;
+            padding: 25px;
+            background: white;
+        }
+
+        .card-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--secondary);
+        }
+
+        .card-text {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 5px;
+        }
+
+        .badge-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .badge-secondary {
+            background-color: var(--secondary);
+            color: white;
+        }
+
+        .badge-success {
+            background-color: var(--success);
+            color: var(--contrast);
+        }
+
+        .badge-danger {
+            background-color: var(--danger);
+            color: white;
+        }
+
+        .badge-outline {
+            background-color: transparent;
+            border: 2px solid var(--primary);
+            color: var(--primary);
+        }
+
+        /* Accessibility */
+        .contrast-demo {
+            padding: 30px;
+            border-radius: 8px;
+            text-align: center;
+            margin: 15px 0;
+        }
+
+        .contrast-demo-1 {
+            background-color: white;
+            color: var(--contrast);
+            border: 2px solid var(--base);
+        }
+
+        .contrast-demo-2 {
+            background-color: var(--dark);
+            color: white;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0;
+            color: #888;
+            border-top: 2px solid var(--base);
+            margin-top: 60px;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .section {
+                break-inside: avoid;
+                box-shadow: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>PlayerCore Design System</h1>
+            <p class="subtitle">Referência visual dos elementos de design da marca PlayerCore</p>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- 01. TIPOGRAFIA -->
+        <section class="section">
+            <h2>01. Tipografia</h2>
+            <p class="subtitle">PlayerCore utiliza fontes modernas para garantir clareza e personalidade</p>
+            
+            <div class="typography-example">
+                <h1 style="margin-bottom: 10px;">Heading 1 - Poppins Bold</h1>
+                <p style="color: #666;">Tamanho: 2.5rem (40px) | Peso: 700</p>
+            </div>
+
+            <div class="typography-example">
+                <h2 style="margin-bottom: 10px;">Heading 2 - Poppins Semibold</h2>
+                <p style="color: #666;">Tamanho: 2rem (32px) | Peso: 600</p>
+            </div>
+
+            <div class="typography-example">
+                <h3 style="margin-bottom: 10px;">Heading 3 - Poppins Semibold</h3>
+                <p style="color: #666;">Tamanho: 1.5rem (24px) | Peso: 600</p>
+            </div>
+
+            <div class="typography-example">
+                <p style="margin-bottom: 10px; font-size: 1rem;">Texto de corpo - Poppins Regular</p>
+                <p style="color: #666;">Tamanho: 1rem (16px) | Peso: 400</p>
+            </div>
+
+            <div class="typography-example">
+                <p class="handwriting" style="margin-bottom: 10px;">Texto informal - Caveat Regular</p>
+                <p style="color: #666;">Para notas, anotações e elementos manuscritos</p>
+            </div>
+        </section>
+
+        <!-- 02. PALETA DE CORES -->
+        <section class="section">
+            <h2>02. Paleta de Cores</h2>
+            <p class="subtitle">Cores de alto impacto visual, equilibrando tecnologia, modernidade e proximidade</p>
+            
+            <div class="grid grid-3">
+                <div class="color-swatch">
+                    <div class="color-preview" style="background-color: #ED1E79;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Rosa Vibrante (Primary)</div>
+                        <div class="color-hex">#ED1E79</div>
+                        <div class="color-description">Cor principal - energia, criatividade e inovação</div>
+                    </div>
+                </div>
+
+                <div class="color-swatch">
+                    <div class="color-preview" style="background-color: #2E0274;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Roxo Impact (Secondary)</div>
+                        <div class="color-hex">#2E0274</div>
+                        <div class="color-description">Cor secundária - profundidade e impacto visual</div>
+                    </div>
+                </div>
+
+                <div class="color-swatch">
+                    <div class="color-preview" style="background-color: #11002C;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Roxo Contrast (Dark)</div>
+                        <div class="color-hex">#11002C</div>
+                        <div class="color-description">Fundos de contraste e layouts de alto impacto</div>
+                    </div>
+                </div>
+
+                <div class="color-swatch">
+                    <div class="color-preview" style="background-color: #FFFFFF; border: 1px solid #ddd;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Branco Puro (Light)</div>
+                        <div class="color-hex">#FFFFFF</div>
+                        <div class="color-description">Acessibilidade e limpeza visual</div>
+                    </div>
+                </div>
+
+                <div class="color-swatch">
+                    <div class="color-preview" style="background-color: #E9E9E9;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Cinza Claro (Base)</div>
+                        <div class="color-hex">#E9E9E9</div>
+                        <div class="color-description">Base neutra e elegante</div>
+                    </div>
+                </div>
+
+                <div class="color-swatch">
+                    <div class="color-preview" style="background-color: #0A0A0A;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Preto Intenso (Contrast)</div>
+                        <div class="color-hex">#0A0A0A</div>
+                        <div class="color-description">Estabilidade, força e neutralidade</div>
+                    </div>
+                </div>
+
+                <div class="color-swatch">
+                    <div class="color-preview" style="background-color: #FF4242;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Danger (Erro)</div>
+                        <div class="color-hex">#FF4242</div>
+                        <div class="color-description">Mensagens de erro e ações destrutivas</div>
+                    </div>
+                </div>
+
+                <div class="color-swatch">
+                    <div class="color-preview" style="background-color: #3FE34F;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Success (Sucesso)</div>
+                        <div class="color-hex">#3FE34F</div>
+                        <div class="color-description">Mensagens de sucesso e confirmação</div>
+                    </div>
+                </div>
+
+                <div class="color-swatch">
+                    <div class="color-preview" style="background-color: #FCFF52;"></div>
+                    <div class="color-info">
+                        <div class="color-name">Warning (Aviso)</div>
+                        <div class="color-hex">#FCFF52</div>
+                        <div class="color-description">Alertas e avisos</div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 40px;">Acessibilidade de Cores</h3>
+            <p class="subtitle">Todas as combinações seguem os padrões de contraste WCAG AA e AAA</p>
+            
+            <div class="grid grid-2">
+                <div class="contrast-demo contrast-demo-1">
+                    <p style="font-weight: 600; font-size: 1.1rem;">Preto Intenso (#0A0A0A)</p>
+                    <p style="font-size: 0.9rem;">sobre</p>
+                    <p style="font-weight: 600; font-size: 1.1rem;">Branco Puro (#FFFFFF)</p>
+                    <p style="color: var(--success); margin-top: 10px; font-size: 0.85rem;">✓ Alto Contraste - AA/AAA</p>
+                </div>
+                <div class="contrast-demo contrast-demo-2">
+                    <p style="font-weight: 600; font-size: 1.1rem;">Branco Puro (#FFFFFF)</p>
+                    <p style="font-size: 0.9rem; opacity: 0.8;">sobre</p>
+                    <p style="font-weight: 600; font-size: 1.1rem;">Roxo Contrast (#11002C)</p>
+                    <p style="margin-top: 10px; font-size: 0.85rem; opacity: 0.9;">✓ Alto Contraste</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 03. ÍCONES -->
+        <section class="section">
+            <h2>03. Ícones</h2>
+            <p class="subtitle">Biblioteca de ícones para interface e redes sociais</p>
+            
+            <h3>Ícones de Interface</h3>
+            <div class="icon-grid">
+                <div class="icon-item">
+                    <div class="icon" style="color: var(--primary);">✓</div>
+                    <div class="icon-name">Check</div>
+                    <div class="icon-desc">Confirmação e sucesso</div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon" style="color: var(--primary);">✕</div>
+                    <div class="icon-name">Close (X)</div>
+                    <div class="icon-desc">Fechar e cancelar</div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon" style="color: var(--primary);">+</div>
+                    <div class="icon-name">Add (+)</div>
+                    <div class="icon-desc">Adicionar novos itens</div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon" style="color: var(--primary);">🔍</div>
+                    <div class="icon-name">Search</div>
+                    <div class="icon-desc">Busca e pesquisa</div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon" style="color: var(--primary);">⚙</div>
+                    <div class="icon-name">Settings</div>
+                    <div class="icon-desc">Configurações</div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon" style="color: var(--primary);">💬</div>
+                    <div class="icon-name">Message</div>
+                    <div class="icon-desc">Mensagens</div>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 30px;">Ícones de Redes Sociais</h3>
+            <div class="icon-grid">
+                <div class="icon-item">
+                    <div class="icon" style="color: var(--secondary);">📱</div>
+                    <div class="icon-name">WhatsApp</div>
+                    <div class="icon-desc">WhatsApp</div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon" style="color: var(--secondary);">✈</div>
+                    <div class="icon-name">Telegram</div>
+                    <div class="icon-desc">Telegram</div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon" style="color: var(--secondary);">📷</div>
+                    <div class="icon-name">Instagram</div>
+                    <div class="icon-desc">Instagram</div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon" style="color: var(--secondary);">👥</div>
+                    <div class="icon-name">Facebook</div>
+                    <div class="icon-desc">Facebook</div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon" style="color: var(--secondary);">💼</div>
+                    <div class="icon-name">LinkedIn</div>
+                    <div class="icon-desc">LinkedIn</div>
+                </div>
+                <div class="icon-item">
+                    <div class="icon" style="color: var(--secondary);">✉</div>
+                    <div class="icon-name">Email</div>
+                    <div class="icon-desc">Email</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 04. BOTÕES -->
+        <section class="section">
+            <h2>04. Botões</h2>
+            <p class="subtitle">Elementos chave de interação com variações de estilo e estado</p>
+            
+            <h3>Variações de Estilo</h3>
+            <div class="button-grid">
+                <button class="btn btn-primary">Primary Button</button>
+                <button class="btn btn-secondary">Secondary Button</button>
+                <button class="btn btn-outline">Outline Button</button>
+                <button class="btn btn-success">Success Button</button>
+                <button class="btn btn-danger">Danger Button</button>
+            </div>
+
+            <h3>Tamanhos</h3>
+            <div class="button-grid">
+                <button class="btn btn-primary btn-sm">Small Button</button>
+                <button class="btn btn-primary">Default Button</button>
+                <button class="btn btn-primary btn-lg">Large Button</button>
+            </div>
+
+            <h3>Estados</h3>
+            <div class="button-grid">
+                <button class="btn btn-primary">Normal</button>
+                <button class="btn btn-primary" style="background-color: #d01a6a;">Hover</button>
+                <button class="btn btn-primary" style="background-color: #b81660;">Active</button>
+                <button class="btn btn-primary" disabled>Disabled</button>
+            </div>
+        </section>
+
+        <!-- 05. FORMULÁRIOS -->
+        <section class="section">
+            <h2>05. Formulários</h2>
+            <p class="subtitle">Campos de formulário com design limpo e estados de interação claros</p>
+            
+            <div class="grid grid-2">
+                <div>
+                    <div class="form-group">
+                        <label>Campo Padrão</label>
+                        <input type="text" placeholder="Digite seu nome">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Campo com Erro</label>
+                        <input type="text" class="error" placeholder="email@invalido">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Campo de Sucesso</label>
+                        <input type="text" class="success" value="email@valido.com">
+                    </div>
+                </div>
+
+                <div>
+                    <div class="form-group">
+                        <label>Campo Desabilitado</label>
+                        <input type="text" disabled value="Campo desabilitado">
+                    </div>
+
+                    <div class="form-group">
+                        <label>Área de Texto</label>
+                        <textarea placeholder="Digite sua mensagem..."></textarea>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 06. COMPONENTES -->
+        <section class="section">
+            <h2>06. Componentes</h2>
+            <p class="subtitle">Cards, badges e outros elementos compostos da interface</p>
+            
+            <h3>Cards</h3>
+            <div class="grid grid-3">
+                <div class="card">
+                    <div class="card-title">Card de Produto</div>
+                    <p class="card-text">Descrição do produto com informações relevantes para o usuário.</p>
+                    <div class="button-grid">
+                        <button class="btn btn-primary btn-sm">Ver Mais</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">Card Informativo</div>
+                    <p class="card-text">Informações importantes sobre serviços ou recursos disponíveis.</p>
+                    <div class="button-grid">
+                        <button class="btn btn-secondary btn-sm">Saiba Mais</button>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-title">Card de Ação</div>
+                    <p class="card-text">Chamada para ação com botão de destaque para conversão.</p>
+                    <div class="button-grid">
+                        <button class="btn btn-success btn-sm">Começar Agora</button>
+                    </div>
+                </div>
+            </div>
+
+            <h3 style="margin-top: 30px;">Badges</h3>
+            <div>
+                <span class="badge badge-primary">Primary Badge</span>
+                <span class="badge badge-secondary">Secondary Badge</span>
+                <span class="badge badge-success">Success Badge</span>
+                <span class="badge badge-danger">Danger Badge</span>
+                <span class="badge badge-outline">Outline Badge</span>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>PlayerCore Design System - Referência Visual v1.0</p>
+        </div>
+    </footer>
+</body>
+</html>
