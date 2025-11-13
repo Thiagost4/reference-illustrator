@@ -1,155 +1,281 @@
-import { useState } from "react";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
-import { Heart, Share2, MessageCircle, ShoppingCart, Star, Trash2 } from "lucide-react";
+import { TrendingUp, TrendingDown, AlertTriangle, Brain, Users, Target, BarChart3, Shield, Sparkles, CheckCircle2, XCircle, Clock } from "lucide-react";
+import { Progress } from "@/components/ui/progress";
 
 const ComponentShowcase = () => {
-  const [liked, setLiked] = useState(false);
-
   return (
-    <div className="space-y-8">
-      {/* Cards Section */}
+    <div className="space-y-12">
+      {/* Analytics Cards Section */}
       <div>
-        <h3 className="text-xl font-semibold mb-4 text-foreground">Cards</h3>
+        <div className="mb-6">
+          <h3 className="text-2xl font-bold text-foreground mb-2">Dashboard Analytics</h3>
+          <p className="text-muted-foreground">Métricas em tempo real com IA proprietária</p>
+        </div>
+        
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {/* Product Card */}
-          <Card className="overflow-hidden hover:shadow-lg transition-shadow">
-            <div className="h-48 bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center">
-              <ShoppingCart className="h-16 w-16 text-primary" />
-            </div>
+          {/* Churn Risk Card */}
+          <Card className="border-l-4 border-l-danger hover:shadow-xl transition-all duration-300">
             <CardHeader>
               <div className="flex items-start justify-between">
-                <CardTitle className="text-lg">Produto Exemplo</CardTitle>
-                <Badge variant="default">Novo</Badge>
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-danger/10 rounded-lg">
+                    <AlertTriangle className="h-6 w-6 text-danger" />
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg">Risco de Churn</CardTitle>
+                    <CardDescription>Análise preditiva</CardDescription>
+                  </div>
+                </div>
+                <Badge variant="destructive">Alta</Badge>
               </div>
-              <CardDescription>
-                Descrição breve do produto com informações relevantes
-              </CardDescription>
             </CardHeader>
-            <CardContent>
-              <div className="flex items-center gap-2 mb-3">
-                {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="h-4 w-4 fill-warning text-warning" />
-                ))}
-                <span className="text-sm text-muted-foreground">(4.5)</span>
+            <CardContent className="space-y-4">
+              <div className="flex items-end gap-2">
+                <span className="text-4xl font-bold text-danger">23%</span>
+                <div className="flex items-center text-danger text-sm mb-2">
+                  <TrendingUp className="h-4 w-4 mr-1" />
+                  <span>+5.2%</span>
+                </div>
               </div>
-              <p className="text-2xl font-bold text-primary">R$ 99,90</p>
+              <Progress value={23} className="h-2 bg-danger/20" />
+              <p className="text-sm text-muted-foreground">
+                127 clientes em risco de abandono
+              </p>
             </CardContent>
-            <CardFooter className="gap-2">
-              <Button className="flex-1">Comprar</Button>
-              <Button 
-                variant="outline" 
-                size="icon"
-                onClick={() => setLiked(!liked)}
-              >
-                <Heart className={liked ? "fill-danger text-danger" : ""} />
-              </Button>
+            <CardFooter>
+              <Button variant="outline" className="w-full">Ver Clientes</Button>
             </CardFooter>
           </Card>
 
-          {/* Info Card */}
-          <Card className="hover:border-primary transition-colors">
+          {/* LTV Optimization Card */}
+          <Card className="border-l-4 border-l-success hover:shadow-xl transition-all duration-300">
             <CardHeader>
-              <CardTitle>Card Informativo</CardTitle>
-              <CardDescription>
-                Com ícones e badges para status
-              </CardDescription>
+              <div className="flex items-start justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-success/10 rounded-lg">
+                    <TrendingUp className="h-6 w-6 text-success" />
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg">Otimização LTV</CardTitle>
+                    <CardDescription>Método 360°</CardDescription>
+                  </div>
+                </div>
+                <Badge className="bg-success text-success-foreground">+18%</Badge>
+              </div>
             </CardHeader>
-            <CardContent className="space-y-3">
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-muted-foreground">Status:</span>
-                <Badge variant="secondary">Ativo</Badge>
+            <CardContent className="space-y-4">
+              <div className="flex items-end gap-2">
+                <span className="text-4xl font-bold text-success">R$ 4.2K</span>
+                <div className="flex items-center text-success text-sm mb-2">
+                  <TrendingUp className="h-4 w-4 mr-1" />
+                  <span>+18%</span>
+                </div>
               </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-muted-foreground">Tipo:</span>
-                <Badge variant="outline">Premium</Badge>
+              <Progress value={75} className="h-2 bg-success/20" />
+              <p className="text-sm text-muted-foreground">
+                Valor médio do tempo de vida aumentado
+              </p>
+            </CardContent>
+            <CardFooter>
+              <Button className="w-full">Orquestrar Ações</Button>
+            </CardFooter>
+          </Card>
+
+          {/* AI Insights Card */}
+          <Card className="border-l-4 border-l-primary hover:shadow-xl transition-all duration-300 bg-gradient-to-br from-primary/5 to-secondary/5">
+            <CardHeader>
+              <div className="flex items-start justify-between">
+                <div className="flex items-center gap-3">
+                  <div className="p-2 bg-primary/10 rounded-lg">
+                    <Brain className="h-6 w-6 text-primary" />
+                  </div>
+                  <div>
+                    <CardTitle className="text-lg">IA Proprietária</CardTitle>
+                    <CardDescription>Insights em tempo real</CardDescription>
+                  </div>
+                </div>
+                <Sparkles className="h-5 w-5 text-primary animate-pulse" />
               </div>
-              <div className="flex items-center justify-between">
-                <span className="text-sm text-muted-foreground">Prioridade:</span>
-                <Badge className="bg-success text-success-foreground">Alta</Badge>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="space-y-3">
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-muted-foreground">Precisão do modelo</span>
+                  <span className="font-semibold text-foreground">94.7%</span>
+                </div>
+                <Progress value={94.7} className="h-2" />
+                <div className="flex items-center justify-between text-sm">
+                  <span className="text-muted-foreground">Análises processadas</span>
+                  <span className="font-semibold text-foreground">12.4K</span>
+                </div>
               </div>
             </CardContent>
             <CardFooter>
-              <Button variant="secondary" className="w-full">Ver Detalhes</Button>
-            </CardFooter>
-          </Card>
-
-          {/* Social Card */}
-          <Card className="hover:shadow-lg transition-shadow">
-            <CardHeader>
-              <CardTitle>Post Social</CardTitle>
-              <CardDescription>2 horas atrás</CardDescription>
-            </CardHeader>
-            <CardContent>
-              <p className="text-sm text-foreground">
-                Exemplo de card para conteúdo social com interações e compartilhamento.
-              </p>
-            </CardContent>
-            <CardFooter className="flex gap-4 border-t border-border pt-4">
-              <Button variant="ghost" size="sm" className="gap-2">
-                <Heart className="h-4 w-4" />
-                <span className="text-xs">42</span>
-              </Button>
-              <Button variant="ghost" size="sm" className="gap-2">
-                <MessageCircle className="h-4 w-4" />
-                <span className="text-xs">12</span>
-              </Button>
-              <Button variant="ghost" size="sm" className="gap-2">
-                <Share2 className="h-4 w-4" />
-                <span className="text-xs">5</span>
-              </Button>
+              <Button variant="secondary" className="w-full">Ver Relatório IA</Button>
             </CardFooter>
           </Card>
         </div>
       </div>
 
-      {/* Modals Section */}
+      {/* Metric Cards - Método 360 */}
       <div>
-        <h3 className="text-xl font-semibold mb-4 text-foreground">Modais e Diálogos</h3>
-        <div className="flex flex-wrap gap-4">
-          {/* Standard Dialog */}
-          <Dialog>
-            <DialogTrigger asChild>
-              <Button>Abrir Modal Padrão</Button>
-            </DialogTrigger>
-            <DialogContent>
-              <DialogHeader>
-                <DialogTitle>Título do Modal</DialogTitle>
-                <DialogDescription>
-                  Descrição do conteúdo do modal. Este é um exemplo de modal padrão com informações e ações.
-                </DialogDescription>
-              </DialogHeader>
-              <div className="py-4">
-                <p className="text-sm text-foreground">
-                  Conteúdo adicional do modal pode ser inserido aqui. Você pode adicionar formulários, listas ou qualquer outro componente.
-                </p>
+        <div className="mb-6">
+          <h3 className="text-2xl font-bold text-foreground mb-2">Método 360°</h3>
+          <p className="text-muted-foreground">Acompanhamento completo da execução</p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+          <Card className="hover:shadow-lg transition-shadow">
+            <CardHeader className="pb-3">
+              <div className="flex items-center justify-between">
+                <Users className="h-5 w-5 text-primary" />
+                <Badge variant="outline">Equipe</Badge>
               </div>
-              <DialogFooter>
-                <Button variant="outline">Cancelar</Button>
-                <Button>Confirmar</Button>
-              </DialogFooter>
-            </DialogContent>
-          </Dialog>
+            </CardHeader>
+            <CardContent>
+              <div className="text-3xl font-bold text-foreground mb-1">847</div>
+              <p className="text-sm text-muted-foreground">Ações orquestradas</p>
+            </CardContent>
+          </Card>
 
-          {/* Alert Dialog */}
+          <Card className="hover:shadow-lg transition-shadow">
+            <CardHeader className="pb-3">
+              <div className="flex items-center justify-between">
+                <Target className="h-5 w-5 text-success" />
+                <Badge className="bg-success text-success-foreground">+12%</Badge>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <div className="text-3xl font-bold text-foreground mb-1">92%</div>
+              <p className="text-sm text-muted-foreground">Taxa de conversão</p>
+            </CardContent>
+          </Card>
+
+          <Card className="hover:shadow-lg transition-shadow">
+            <CardHeader className="pb-3">
+              <div className="flex items-center justify-between">
+                <BarChart3 className="h-5 w-5 text-primary" />
+                <Badge variant="secondary">Mensal</Badge>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <div className="text-3xl font-bold text-foreground mb-1">R$ 87K</div>
+              <p className="text-sm text-muted-foreground">Revenue recuperado</p>
+            </CardContent>
+          </Card>
+
+          <Card className="hover:shadow-lg transition-shadow">
+            <CardHeader className="pb-3">
+              <div className="flex items-center justify-between">
+                <Shield className="h-5 w-5 text-primary" />
+                <Badge variant="outline">Segurança</Badge>
+              </div>
+            </CardHeader>
+            <CardContent>
+              <div className="text-3xl font-bold text-foreground mb-1">99.9%</div>
+              <p className="text-sm text-muted-foreground">Uptime garantido</p>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+
+      {/* Action Cards with Status */}
+      <div>
+        <div className="mb-6">
+          <h3 className="text-2xl font-bold text-foreground mb-2">Ações Orquestradas</h3>
+          <p className="text-muted-foreground">Acompanhe a execução em tempo real</p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <Card className="hover:border-success transition-colors">
+            <CardHeader>
+              <div className="flex items-start justify-between">
+                <div>
+                  <CardTitle className="text-lg flex items-center gap-2">
+                    <CheckCircle2 className="h-5 w-5 text-success" />
+                    Campanha de Retenção
+                  </CardTitle>
+                  <CardDescription>Enviada há 2 horas</CardDescription>
+                </div>
+                <Badge className="bg-success text-success-foreground">Concluída</Badge>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <div className="flex justify-between text-sm">
+                <span className="text-muted-foreground">Taxa de abertura</span>
+                <span className="font-semibold">68%</span>
+              </div>
+              <Progress value={68} className="h-2 bg-success/20" />
+              <div className="flex justify-between text-sm">
+                <span className="text-muted-foreground">Conversões</span>
+                <span className="font-semibold">156 clientes retidos</span>
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="hover:border-primary transition-colors">
+            <CardHeader>
+              <div className="flex items-start justify-between">
+                <div>
+                  <CardTitle className="text-lg flex items-center gap-2">
+                    <Clock className="h-5 w-5 text-primary" />
+                    Análise Preditiva
+                  </CardTitle>
+                  <CardDescription>Em processamento</CardDescription>
+                </div>
+                <Badge variant="secondary">Em andamento</Badge>
+              </div>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <div className="flex justify-between text-sm">
+                <span className="text-muted-foreground">Progresso</span>
+                <span className="font-semibold">73%</span>
+              </div>
+              <Progress value={73} className="h-2" />
+              <div className="flex justify-between text-sm">
+                <span className="text-muted-foreground">Tempo estimado</span>
+                <span className="font-semibold">~5 minutos</span>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+
+      {/* Modals and Dialogs */}
+      <div>
+        <div className="mb-6">
+          <h3 className="text-2xl font-bold text-foreground mb-2">Diálogos do Sistema</h3>
+          <p className="text-muted-foreground">Interações críticas e confirmações</p>
+        </div>
+        
+        <div className="flex flex-wrap gap-4">
+          {/* Critical Action Dialog */}
           <AlertDialog>
             <AlertDialogTrigger asChild>
-              <Button variant="destructive">Ação Destrutiva</Button>
+              <Button variant="outline" className="border-danger text-danger hover:bg-danger/10">
+                <AlertTriangle className="mr-2 h-4 w-4" />
+                Ação Crítica
+              </Button>
             </AlertDialogTrigger>
             <AlertDialogContent>
               <AlertDialogHeader>
-                <AlertDialogTitle>Você tem certeza?</AlertDialogTitle>
+                <AlertDialogTitle className="flex items-center gap-2">
+                  <AlertTriangle className="h-5 w-5 text-danger" />
+                  Confirmar Ação Crítica
+                </AlertDialogTitle>
                 <AlertDialogDescription>
-                  Esta ação não pode ser desfeita. Isso irá permanentemente deletar os dados selecionados.
+                  Esta ação afetará 127 clientes identificados com alto risco de churn. 
+                  Deseja prosseguir com a orquestração automática de ações de retenção?
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
                 <AlertDialogCancel>Cancelar</AlertDialogCancel>
-                <AlertDialogAction className="bg-destructive text-destructive-foreground hover:bg-destructive/90">
-                  Continuar
+                <AlertDialogAction className="bg-danger hover:bg-danger/90">
+                  Confirmar e Executar
                 </AlertDialogAction>
               </AlertDialogFooter>
             </AlertDialogContent>
@@ -158,43 +284,158 @@ const ComponentShowcase = () => {
           {/* Success Dialog */}
           <Dialog>
             <DialogTrigger asChild>
-              <Button className="bg-success text-success-foreground hover:bg-success/90">
-                Modal de Sucesso
+              <Button className="bg-success hover:bg-success/90 text-success-foreground">
+                <CheckCircle2 className="mr-2 h-4 w-4" />
+                Ação Concluída
               </Button>
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
-                <DialogTitle className="flex items-center gap-2 text-success">
-                  <div className="h-8 w-8 rounded-full bg-success/20 flex items-center justify-center">
-                    ✓
-                  </div>
-                  Operação Concluída!
+                <DialogTitle className="text-success flex items-center gap-2">
+                  <CheckCircle2 className="h-5 w-5" />
+                  Análise Concluída com Sucesso
                 </DialogTitle>
                 <DialogDescription>
-                  Sua ação foi realizada com sucesso. Você pode fechar esta janela.
+                  O processamento foi finalizado e os insights estão disponíveis
                 </DialogDescription>
               </DialogHeader>
+              <div className="py-4 space-y-4">
+                <div className="p-4 bg-success/10 rounded-lg">
+                  <div className="flex items-center justify-between mb-2">
+                    <span className="text-sm font-medium">Clientes analisados</span>
+                    <span className="text-lg font-bold text-success">1,847</span>
+                  </div>
+                  <div className="flex items-center justify-between">
+                    <span className="text-sm font-medium">Insights gerados</span>
+                    <span className="text-lg font-bold text-success">342</span>
+                  </div>
+                </div>
+              </div>
               <DialogFooter>
-                <Button className="bg-success text-success-foreground hover:bg-success/90">
-                  Fechar
-                </Button>
+                <Button className="bg-success hover:bg-success/90">Ver Relatório</Button>
+              </DialogFooter>
+            </DialogContent>
+          </Dialog>
+
+          {/* AI Processing Dialog */}
+          <Dialog>
+            <DialogTrigger asChild>
+              <Button variant="outline">
+                <Brain className="mr-2 h-4 w-4" />
+                Iniciar Análise IA
+              </Button>
+            </DialogTrigger>
+            <DialogContent>
+              <DialogHeader>
+                <DialogTitle className="flex items-center gap-2">
+                  <Brain className="h-5 w-5 text-primary" />
+                  Análise com IA Proprietária
+                </DialogTitle>
+                <DialogDescription>
+                  Configure os parâmetros para análise preditiva
+                </DialogDescription>
+              </DialogHeader>
+              <div className="py-4 space-y-4">
+                <div className="space-y-2">
+                  <label className="text-sm font-medium">Período de análise</label>
+                  <div className="flex gap-2">
+                    <Button variant="outline" size="sm">7 dias</Button>
+                    <Button variant="outline" size="sm">30 dias</Button>
+                    <Button size="sm">90 dias</Button>
+                  </div>
+                </div>
+                <div className="p-4 border border-border rounded-lg bg-muted/50">
+                  <div className="flex items-start gap-3">
+                    <Sparkles className="h-5 w-5 text-primary mt-0.5" />
+                    <div className="flex-1">
+                      <p className="text-sm font-medium mb-1">IA Sugerida</p>
+                      <p className="text-xs text-muted-foreground">
+                        Com base no histórico, recomendamos análise de 90 dias para melhor precisão preditiva
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <DialogFooter>
+                <Button variant="outline">Cancelar</Button>
+                <Button>Iniciar Análise</Button>
               </DialogFooter>
             </DialogContent>
           </Dialog>
         </div>
       </div>
 
-      {/* Badges Section */}
+      {/* Status Badges */}
       <div>
-        <h3 className="text-xl font-semibold mb-4 text-foreground">Badges e Status</h3>
-        <div className="flex flex-wrap gap-3">
-          <Badge variant="default">Primário</Badge>
-          <Badge variant="secondary">Secundário</Badge>
-          <Badge variant="outline">Outline</Badge>
-          <Badge variant="destructive">Erro</Badge>
-          <Badge className="bg-success text-success-foreground">Sucesso</Badge>
-          <Badge className="bg-warning text-foreground">Aviso</Badge>
-          <Badge className="bg-accent text-accent-foreground">Destaque</Badge>
+        <div className="mb-6">
+          <h3 className="text-2xl font-bold text-foreground mb-2">Status e Indicadores</h3>
+          <p className="text-muted-foreground">Estados visuais para análises e métricas</p>
+        </div>
+        
+        <div className="space-y-4">
+          <div>
+            <p className="text-sm font-medium text-muted-foreground mb-3">Risco de Churn</p>
+            <div className="flex flex-wrap gap-2">
+              <Badge variant="destructive" className="gap-1">
+                <XCircle className="h-3 w-3" />
+                Alto Risco
+              </Badge>
+              <Badge className="bg-warning text-warning-foreground gap-1">
+                <AlertTriangle className="h-3 w-3" />
+                Risco Moderado
+              </Badge>
+              <Badge className="bg-success text-success-foreground gap-1">
+                <CheckCircle2 className="h-3 w-3" />
+                Baixo Risco
+              </Badge>
+            </div>
+          </div>
+
+          <div>
+            <p className="text-sm font-medium text-muted-foreground mb-3">Status de Análise</p>
+            <div className="flex flex-wrap gap-2">
+              <Badge variant="outline" className="gap-1">
+                <Clock className="h-3 w-3" />
+                Aguardando
+              </Badge>
+              <Badge variant="secondary" className="gap-1">
+                <Brain className="h-3 w-3 animate-pulse" />
+                Processando IA
+              </Badge>
+              <Badge className="gap-1">
+                <CheckCircle2 className="h-3 w-3" />
+                Concluído
+              </Badge>
+            </div>
+          </div>
+
+          <div>
+            <p className="text-sm font-medium text-muted-foreground mb-3">Performance LTV</p>
+            <div className="flex flex-wrap gap-2">
+              <Badge className="bg-success text-success-foreground gap-1">
+                <TrendingUp className="h-3 w-3" />
+                +18% Crescimento
+              </Badge>
+              <Badge className="bg-primary text-primary-foreground gap-1">
+                <Target className="h-3 w-3" />
+                Meta Atingida
+              </Badge>
+              <Badge variant="secondary" className="gap-1">
+                <BarChart3 className="h-3 w-3" />
+                Em Análise
+              </Badge>
+            </div>
+          </div>
+
+          <div>
+            <p className="text-sm font-medium text-muted-foreground mb-3">Categorias</p>
+            <div className="flex flex-wrap gap-2">
+              <Badge variant="outline">Método 360°</Badge>
+              <Badge className="bg-primary text-primary-foreground">IA Proprietária</Badge>
+              <Badge variant="secondary">Orquestração</Badge>
+              <Badge className="bg-accent text-accent-foreground">Insights</Badge>
+            </div>
+          </div>
         </div>
       </div>
     </div>
