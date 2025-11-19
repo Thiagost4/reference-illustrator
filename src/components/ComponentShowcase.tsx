@@ -3,8 +3,9 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
-import { TrendingUp, TrendingDown, AlertTriangle, Brain, Users, Target, BarChart3, Shield, Sparkles, CheckCircle2, XCircle, Clock } from "lucide-react";
+import { TrendingUp, TrendingDown, AlertTriangle, Brain, Users, Target, BarChart3, Shield, Sparkles, CheckCircle2, XCircle, Clock, CreditCard, Download, Trash2 } from "lucide-react";
 import { Progress } from "@/components/ui/progress";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 const ComponentShowcase = () => {
   return (
@@ -389,78 +390,270 @@ const ComponentShowcase = () => {
         </div>
       </div>
 
-      {/* Status Badges */}
+      {/* Badges Section */}
       <div>
         <div className="mb-6">
-          <h3 className="text-2xl font-bold text-foreground mb-2">Status e Indicadores</h3>
-          <p className="text-muted-foreground">Estados visuais para análises e métricas</p>
+          <h3 className="text-2xl font-bold text-foreground mb-2">Badges & Indicators</h3>
+          <p className="text-muted-foreground">Indicadores visuais de status e categorias</p>
         </div>
         
-        <div className="space-y-4">
-          <div>
-            <p className="text-sm font-medium text-muted-foreground mb-3">Risco de Churn</p>
-            <div className="flex flex-wrap gap-2">
-              <Badge variant="destructive" className="gap-1">
-                <XCircle className="h-3 w-3" />
-                Alto Risco
-              </Badge>
-              <Badge className="bg-warning text-warning-foreground gap-1">
-                <AlertTriangle className="h-3 w-3" />
-                Risco Moderado
-              </Badge>
-              <Badge className="bg-success text-success-foreground gap-1">
-                <CheckCircle2 className="h-3 w-3" />
-                Baixo Risco
-              </Badge>
-            </div>
-          </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* Status Badges */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-base">Risco de Churn</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <div className="flex flex-wrap gap-2">
+                <Badge variant="destructive" className="bg-danger text-danger-foreground">Alta</Badge>
+                <Badge className="bg-warning text-warning-foreground">Média</Badge>
+                <Badge className="bg-success text-success-foreground">Baixa</Badge>
+              </div>
+            </CardContent>
+          </Card>
 
-          <div>
-            <p className="text-sm font-medium text-muted-foreground mb-3">Status de Análise</p>
-            <div className="flex flex-wrap gap-2">
-              <Badge variant="outline" className="gap-1">
-                <Clock className="h-3 w-3" />
-                Aguardando
-              </Badge>
-              <Badge variant="secondary" className="gap-1">
-                <Brain className="h-3 w-3 animate-pulse" />
-                Processando IA
-              </Badge>
-              <Badge className="gap-1">
-                <CheckCircle2 className="h-3 w-3" />
-                Concluído
-              </Badge>
-            </div>
-          </div>
+          {/* Analysis Status */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-base">Status de Análise</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <div className="flex flex-wrap gap-2">
+                <Badge className="bg-primary text-primary-foreground">
+                  <Sparkles className="w-3 h-3 mr-1" />
+                  Processando
+                </Badge>
+                <Badge className="bg-success text-success-foreground">
+                  <CheckCircle2 className="w-3 h-3 mr-1" />
+                  Concluído
+                </Badge>
+                <Badge variant="secondary">
+                  <Clock className="w-3 h-3 mr-1" />
+                  Aguardando
+                </Badge>
+              </div>
+            </CardContent>
+          </Card>
 
-          <div>
-            <p className="text-sm font-medium text-muted-foreground mb-3">Performance LTV</p>
-            <div className="flex flex-wrap gap-2">
-              <Badge className="bg-success text-success-foreground gap-1">
-                <TrendingUp className="h-3 w-3" />
-                +18% Crescimento
-              </Badge>
-              <Badge className="bg-primary text-primary-foreground gap-1">
-                <Target className="h-3 w-3" />
-                Meta Atingida
-              </Badge>
-              <Badge variant="secondary" className="gap-1">
-                <BarChart3 className="h-3 w-3" />
-                Em Análise
-              </Badge>
-            </div>
-          </div>
+          {/* LTV Performance */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-base">Performance LTV</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <div className="flex flex-wrap gap-2">
+                <Badge className="bg-success text-success-foreground">
+                  <TrendingUp className="w-3 h-3 mr-1" />
+                  +18%
+                </Badge>
+                <Badge className="bg-danger text-danger-foreground">
+                  <TrendingDown className="w-3 h-3 mr-1" />
+                  -12%
+                </Badge>
+              </div>
+            </CardContent>
+          </Card>
 
-          <div>
-            <p className="text-sm font-medium text-muted-foreground mb-3">Categorias</p>
-            <div className="flex flex-wrap gap-2">
-              <Badge variant="outline">Método 360°</Badge>
-              <Badge className="bg-primary text-primary-foreground">IA Proprietária</Badge>
-              <Badge variant="secondary">Orquestração</Badge>
-              <Badge className="bg-accent text-accent-foreground">Insights</Badge>
-            </div>
-          </div>
+          {/* Categories */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="text-base">Categorias</CardTitle>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <div className="flex flex-wrap gap-2">
+                <Badge variant="outline">Premium</Badge>
+                <Badge variant="outline">VIP</Badge>
+                <Badge variant="outline">Regular</Badge>
+                <Badge variant="outline">Novo</Badge>
+              </div>
+            </CardContent>
+          </Card>
         </div>
+      </div>
+
+      {/* Settings-Style Cards */}
+      <div>
+        <div className="mb-6">
+          <h3 className="text-2xl font-bold text-foreground mb-2">Cards de Configuração</h3>
+          <p className="text-muted-foreground">Layouts de cards para páginas de configuração e gestão</p>
+        </div>
+        
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {/* Billing Card */}
+          <Card className="border-border">
+            <CardHeader>
+              <CardTitle>Plano & Faturamento</CardTitle>
+              <CardDescription>Gerencie seu plano e informações de cobrança</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-4">
+              <div className="p-4 border border-border rounded-lg">
+                <div className="flex items-center justify-between mb-2">
+                  <div className="font-medium text-lg">Nexus Pro</div>
+                  <Badge className="bg-primary/10 text-primary">Ativo</Badge>
+                </div>
+                <div className="text-sm text-muted-foreground mb-4">
+                  R$ 14.900/mês • Próxima fatura: 15/jan/2025
+                </div>
+                <div className="flex gap-2">
+                  <Button variant="outline" size="sm">Alterar plano</Button>
+                  <Button variant="outline" size="sm">Cancelar</Button>
+                </div>
+              </div>
+
+              <div className="p-4 border border-border rounded-lg">
+                <div className="flex items-center gap-3 mb-2">
+                  <CreditCard className="w-5 h-5 text-muted-foreground" />
+                  <div className="font-medium">•••• •••• •••• 4242</div>
+                  <Badge variant="secondary">Padrão</Badge>
+                </div>
+                <div className="text-sm text-muted-foreground">Vence em 12/2027</div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Sessions Card */}
+          <Card className="border-border">
+            <CardHeader>
+              <CardTitle>Sessões Ativas</CardTitle>
+              <CardDescription>Dispositivos conectados à sua conta</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-3">
+              <div className="flex items-center justify-between p-4 border border-border rounded-lg">
+                <div>
+                  <div className="font-medium">Sessão atual</div>
+                  <div className="text-sm text-muted-foreground">Chrome no macOS • Fortaleza, BR</div>
+                  <div className="text-xs text-muted-foreground">Última atividade: agora</div>
+                </div>
+                <Badge className="bg-success/10 text-success">Atual</Badge>
+              </div>
+
+              <div className="flex items-center justify-between p-4 border border-border rounded-lg">
+                <div>
+                  <div className="font-medium">Mobile</div>
+                  <div className="text-sm text-muted-foreground">iPhone • Fortaleza, BR</div>
+                  <div className="text-xs text-muted-foreground">Última atividade: há 2 horas</div>
+                </div>
+                <Button variant="outline" size="sm">Encerrar</Button>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Billing History Card */}
+          <Card className="border-border">
+            <CardHeader>
+              <CardTitle>Histórico de Cobrança</CardTitle>
+              <CardDescription>Últimas transações e notas fiscais</CardDescription>
+            </CardHeader>
+            <CardContent className="space-y-2">
+              <div className="flex items-center justify-between p-3 border border-border rounded-lg">
+                <div>
+                  <div className="font-medium">15/dez/2024</div>
+                  <div className="text-sm text-muted-foreground">Nexus Pro - Mensal</div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="font-medium">R$ 14.900,00</span>
+                  <Button variant="ghost" size="sm">
+                    <Download className="w-4 h-4" />
+                  </Button>
+                </div>
+              </div>
+
+              <div className="flex items-center justify-between p-3 border border-border rounded-lg">
+                <div>
+                  <div className="font-medium">15/nov/2024</div>
+                  <div className="text-sm text-muted-foreground">Nexus Pro - Mensal</div>
+                </div>
+                <div className="flex items-center gap-2">
+                  <span className="font-medium">R$ 14.900,00</span>
+                  <Button variant="ghost" size="sm">
+                    <Download className="w-4 h-4" />
+                  </Button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Danger Zone Card */}
+          <Card className="border-border">
+            <CardHeader>
+              <CardTitle className="text-danger">Zona de Risco</CardTitle>
+              <CardDescription>Ações críticas e permanentes</CardDescription>
+            </CardHeader>
+            <CardContent>
+              <div className="p-4 border border-danger/20 rounded-lg bg-danger/5">
+                <div className="space-y-4">
+                  <div>
+                    <div className="font-medium text-danger">Encerrar workspace</div>
+                    <div className="text-sm text-danger/80">
+                      Esta ação não pode ser desfeita. Entre em contato com o suporte antes de prosseguir.
+                    </div>
+                  </div>
+                  <Button variant="destructive" className="gap-2">
+                    <Trash2 className="w-4 h-4" />
+                    Encerrar workspace
+                  </Button>
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+        </div>
+      </div>
+
+      {/* Tabs Example */}
+      <div>
+        <div className="mb-6">
+          <h3 className="text-2xl font-bold text-foreground mb-2">Tabs Navigation</h3>
+          <p className="text-muted-foreground">Sistema de navegação por abas</p>
+        </div>
+        
+        <Card className="border-border">
+          <CardContent className="pt-6">
+            <Tabs defaultValue="overview" className="w-full">
+              <TabsList className="grid w-full grid-cols-4">
+                <TabsTrigger value="overview">Visão Geral</TabsTrigger>
+                <TabsTrigger value="analytics">Analytics</TabsTrigger>
+                <TabsTrigger value="reports">Relatórios</TabsTrigger>
+                <TabsTrigger value="settings">Configurações</TabsTrigger>
+              </TabsList>
+
+              <TabsContent value="overview" className="space-y-4 mt-6">
+                <div className="p-6 border border-border rounded-lg">
+                  <h4 className="font-semibold mb-2">Visão Geral</h4>
+                  <p className="text-sm text-muted-foreground">
+                    Conteúdo da aba de visão geral com métricas principais e resumo executivo.
+                  </p>
+                </div>
+              </TabsContent>
+
+              <TabsContent value="analytics" className="space-y-4 mt-6">
+                <div className="p-6 border border-border rounded-lg">
+                  <h4 className="font-semibold mb-2">Analytics</h4>
+                  <p className="text-sm text-muted-foreground">
+                    Análises detalhadas de performance, churn e LTV com gráficos e indicadores.
+                  </p>
+                </div>
+              </TabsContent>
+
+              <TabsContent value="reports" className="space-y-4 mt-6">
+                <div className="p-6 border border-border rounded-lg">
+                  <h4 className="font-semibold mb-2">Relatórios</h4>
+                  <p className="text-sm text-muted-foreground">
+                    Relatórios semanais e mensais de retenção e microtendências.
+                  </p>
+                </div>
+              </TabsContent>
+
+              <TabsContent value="settings" className="space-y-4 mt-6">
+                <div className="p-6 border border-border rounded-lg">
+                  <h4 className="font-semibold mb-2">Configurações</h4>
+                  <p className="text-sm text-muted-foreground">
+                    Preferências da aplicação e configurações de workspace.
+                  </p>
+                </div>
+              </TabsContent>
+            </Tabs>
+          </CardContent>
+        </Card>
       </div>
     </div>
   );

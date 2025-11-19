@@ -2,9 +2,20 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import { Checkbox } from "@/components/ui/checkbox";
-import { AlertCircle, CheckCircle2 } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Switch } from "@/components/ui/switch";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { AlertCircle, CheckCircle2, Mail, Bell, Upload, Eye, EyeOff } from "lucide-react";
+import { useState } from "react";
 
 const FormShowcase = () => {
+  const [showPassword, setShowPassword] = useState(false);
+  const [notifications, setNotifications] = useState({
+    email: true,
+    push: false,
+  });
+
   return (
     <div className="space-y-12">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -168,6 +179,167 @@ const FormShowcase = () => {
               className="min-h-[120px] resize-none"
               disabled
             />
+          </div>
+        </div>
+      </div>
+
+      {/* Advanced Form Components Section */}
+      <div>
+        <h3 className="text-2xl font-bold text-foreground mb-6">Componentes Avançados</h3>
+        
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          {/* Profile Form with Avatar */}
+          <div className="p-6 border border-border rounded-lg bg-card space-y-6">
+            <h4 className="text-lg font-semibold text-foreground">Upload & Profile</h4>
+            
+            <div className="flex items-center gap-6">
+              <Avatar className="w-20 h-20">
+                <AvatarImage src="/placeholder.svg" />
+                <AvatarFallback className="text-lg bg-primary/10 text-primary">PC</AvatarFallback>
+              </Avatar>
+              <div className="space-y-2">
+                <Button variant="outline" className="gap-2">
+                  <Upload className="w-4 h-4" />
+                  Enviar foto
+                </Button>
+                <p className="text-sm text-muted-foreground">
+                  JPG, PNG ou GIF. Máx 2MB.
+                </p>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-2 gap-4">
+              <div className="space-y-2">
+                <Label htmlFor="firstName">Nome</Label>
+                <Input id="firstName" defaultValue="Thiago" />
+              </div>
+              <div className="space-y-2">
+                <Label htmlFor="lastName">Sobrenome</Label>
+                <Input id="lastName" defaultValue="Teles" />
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="profileEmail">E-mail</Label>
+              <Input id="profileEmail" type="email" defaultValue="thiago@playercore.com" />
+            </div>
+          </div>
+
+          {/* Select & Switches */}
+          <div className="p-6 border border-border rounded-lg bg-card space-y-6">
+            <h4 className="text-lg font-semibold text-foreground">Select & Switches</h4>
+            
+            <div className="space-y-2">
+              <Label htmlFor="timezone">Fuso horário</Label>
+              <Select defaultValue="brt">
+                <SelectTrigger>
+                  <SelectValue placeholder="Selecione o fuso horário" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="brt">Brasília (BRT)</SelectItem>
+                  <SelectItem value="utc">UTC</SelectItem>
+                  <SelectItem value="art">Buenos Aires (ART)</SelectItem>
+                  <SelectItem value="pt">Lisboa (WET)</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="theme">Tema</Label>
+              <Select defaultValue="light">
+                <SelectTrigger>
+                  <SelectValue placeholder="Selecione o tema" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="light">Claro</SelectItem>
+                  <SelectItem value="dark">Escuro</SelectItem>
+                  <SelectItem value="system">Sistema</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+
+            <div className="space-y-4 pt-4 border-t border-border">
+              <h5 className="text-sm font-medium text-foreground">Notificações</h5>
+              
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <Mail className="w-5 h-5 text-muted-foreground" />
+                  <div>
+                    <div className="text-sm font-medium">E-mail</div>
+                    <div className="text-xs text-muted-foreground">Alertas por e-mail</div>
+                  </div>
+                </div>
+                <Switch
+                  checked={notifications.email}
+                  onCheckedChange={(value) => setNotifications(prev => ({ ...prev, email: value }))}
+                />
+              </div>
+
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <Bell className="w-5 h-5 text-muted-foreground" />
+                  <div>
+                    <div className="text-sm font-medium">Push</div>
+                    <div className="text-xs text-muted-foreground">Notificações push</div>
+                  </div>
+                </div>
+                <Switch
+                  checked={notifications.push}
+                  onCheckedChange={(value) => setNotifications(prev => ({ ...prev, push: value }))}
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Password with Toggle */}
+          <div className="p-6 border border-border rounded-lg bg-card space-y-6">
+            <h4 className="text-lg font-semibold text-foreground">Senha com Toggle</h4>
+            
+            <div className="space-y-2">
+              <Label htmlFor="currentPassword">Senha atual</Label>
+              <div className="relative">
+                <Input
+                  id="currentPassword"
+                  type={showPassword ? "text" : "password"}
+                  placeholder="Digite sua senha atual"
+                />
+                <Button
+                  type="button"
+                  variant="ghost"
+                  size="icon"
+                  className="absolute right-2 top-1/2 -translate-y-1/2 h-8 w-8"
+                  onClick={() => setShowPassword(!showPassword)}
+                >
+                  {showPassword ? <EyeOff className="w-4 h-4" /> : <Eye className="w-4 h-4" />}
+                </Button>
+              </div>
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="newPassword">Nova senha</Label>
+              <Input id="newPassword" type="password" placeholder="Crie uma nova senha" />
+            </div>
+
+            <div className="space-y-2">
+              <Label htmlFor="confirmPassword">Confirmar nova senha</Label>
+              <Input id="confirmPassword" type="password" placeholder="Repita a nova senha" />
+            </div>
+          </div>
+
+          {/* Bio Textarea */}
+          <div className="p-6 border border-border rounded-lg bg-card space-y-6">
+            <h4 className="text-lg font-semibold text-foreground">Textarea</h4>
+            
+            <div className="space-y-2">
+              <Label htmlFor="bio">Sobre você</Label>
+              <Textarea
+                id="bio"
+                placeholder="Ex: Responsável pela operação e retenção de jogadores..."
+                defaultValue="Head de Produto focado em retenção, churn e automação de jornadas no iGaming."
+                rows={5}
+              />
+              <p className="text-xs text-muted-foreground">Máximo de 500 caracteres</p>
+            </div>
           </div>
         </div>
       </div>
