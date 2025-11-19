@@ -121,63 +121,87 @@ const ComponentShowcase = () => {
         </div>
       </div>
 
-      {/* Metric Cards - Método 360 */}
+      {/* Metric Cards - Método 360 - Minimal Style */}
       <div>
         <div className="mb-6">
-          <h3 className="text-2xl font-bold text-foreground mb-2">Método 360°</h3>
-          <p className="text-muted-foreground">Acompanhamento completo da execução</p>
+          <h3 className="text-2xl font-bold text-foreground mb-2">Analytics</h3>
+          <p className="text-muted-foreground">Monitor performance and gain insights into your workflows</p>
         </div>
         
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-          <Card className="hover:shadow-lg transition-shadow">
-            <CardHeader className="pb-3">
-              <div className="flex items-center justify-between">
-                <Users className="h-5 w-5 text-primary" />
-                <Badge variant="outline">Equipe</Badge>
+          {/* Total Executions */}
+          <Card className="hover:shadow-md transition-shadow border-border">
+            <CardContent className="pt-6">
+              <div className="flex items-start justify-between mb-4">
+                <div className="p-3 bg-muted rounded-full">
+                  <svg className="h-6 w-6 text-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                  </svg>
+                </div>
+                <div className="flex items-center text-success text-sm font-medium">
+                  <TrendingUp className="h-4 w-4 mr-1" />
+                  +12.5%
+                </div>
               </div>
-            </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-foreground mb-1">847</div>
-              <p className="text-sm text-muted-foreground">Ações orquestradas</p>
+              <div className="text-4xl font-bold text-foreground mb-1">24,847</div>
+              <p className="text-sm font-medium text-foreground mb-1">Total Executions</p>
+              <p className="text-xs text-muted-foreground">This month</p>
             </CardContent>
           </Card>
 
-          <Card className="hover:shadow-lg transition-shadow">
-            <CardHeader className="pb-3">
-              <div className="flex items-center justify-between">
-                <Target className="h-5 w-5 text-success" />
-                <Badge className="bg-success text-success-foreground">+12%</Badge>
+          {/* Success Rate */}
+          <Card className="hover:shadow-md transition-shadow border-border">
+            <CardContent className="pt-6">
+              <div className="flex items-start justify-between mb-4">
+                <div className="p-3 bg-muted rounded-full">
+                  <svg className="h-6 w-6 text-foreground" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div className="flex items-center text-success text-sm font-medium">
+                  <TrendingUp className="h-4 w-4 mr-1" />
+                  +0.3%
+                </div>
               </div>
-            </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-foreground mb-1">92%</div>
-              <p className="text-sm text-muted-foreground">Taxa de conversão</p>
+              <div className="text-4xl font-bold text-foreground mb-1">98.7%</div>
+              <p className="text-sm font-medium text-foreground mb-1">Success Rate</p>
+              <p className="text-xs text-muted-foreground">Last 30 days</p>
             </CardContent>
           </Card>
 
-          <Card className="hover:shadow-lg transition-shadow">
-            <CardHeader className="pb-3">
-              <div className="flex items-center justify-between">
-                <BarChart3 className="h-5 w-5 text-primary" />
-                <Badge variant="secondary">Mensal</Badge>
+          {/* Avg Duration */}
+          <Card className="hover:shadow-md transition-shadow border-border">
+            <CardContent className="pt-6">
+              <div className="flex items-start justify-between mb-4">
+                <div className="p-3 bg-muted rounded-full">
+                  <Clock className="h-6 w-6 text-foreground" />
+                </div>
+                <div className="flex items-center text-success text-sm font-medium">
+                  <TrendingUp className="h-4 w-4 mr-1 rotate-180 text-success" />
+                  -2.1s
+                </div>
               </div>
-            </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-foreground mb-1">R$ 87K</div>
-              <p className="text-sm text-muted-foreground">Revenue recuperado</p>
+              <div className="text-4xl font-bold text-foreground mb-1">38.2s</div>
+              <p className="text-sm font-medium text-foreground mb-1">Avg Duration</p>
+              <p className="text-xs text-muted-foreground">Per execution</p>
             </CardContent>
           </Card>
 
-          <Card className="hover:shadow-lg transition-shadow">
-            <CardHeader className="pb-3">
-              <div className="flex items-center justify-between">
-                <Shield className="h-5 w-5 text-primary" />
-                <Badge variant="outline">Segurança</Badge>
+          {/* Error Rate */}
+          <Card className="hover:shadow-md transition-shadow border-border">
+            <CardContent className="pt-6">
+              <div className="flex items-start justify-between mb-4">
+                <div className="p-3 bg-muted rounded-full">
+                  <XCircle className="h-6 w-6 text-foreground" />
+                </div>
+                <div className="flex items-center text-destructive text-sm font-medium">
+                  <TrendingDown className="h-4 w-4 mr-1" />
+                  -
+                </div>
               </div>
-            </CardHeader>
-            <CardContent>
-              <div className="text-3xl font-bold text-foreground mb-1">99.9%</div>
-              <p className="text-sm text-muted-foreground">Uptime garantido</p>
+              <div className="text-4xl font-bold text-foreground mb-1">1.3%</div>
+              <p className="text-sm font-medium text-foreground mb-1">Error Rate</p>
+              <p className="text-xs text-muted-foreground">Last 30 days</p>
             </CardContent>
           </Card>
         </div>
